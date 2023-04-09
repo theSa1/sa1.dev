@@ -1,27 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@layer components {
+  .nav-link {
+    @apply relative inline-block;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  .nav-link:after {
+    content: "";
+    @apply absolute bottom-0 left-0 h-0.5 w-full origin-bottom-right scale-x-0 bg-white transition-transform duration-200 ease-out;
+  }
+
+  .nav-link:hover:after {
+    @apply origin-bottom-left scale-x-100;
+  }
+
+  .active:after {
+    @apply origin-bottom-left scale-x-100;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+@tailwind utilities;
