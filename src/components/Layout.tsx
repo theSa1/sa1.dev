@@ -17,7 +17,7 @@ export const Layout: React.FC<{
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-background p-24">
-      <div className="grid aspect-video h-80 grid-cols-[1fr,auto] rounded bg-card px-10 py-8 shadow-md">
+      <div className="flex aspect-video h-80 rounded bg-card px-10 py-8 shadow-md">
         <div className="flex flex-col justify-between">
           {children}
           <div className="flex gap-5">

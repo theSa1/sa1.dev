@@ -1,23 +1,44 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 @tailwind base;
+
+@layer base {
+  .overflow-y-scroll::-webkit-scrollbar {
+    @apply w-1;
+  }
+  .overflow-y-scroll::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-secondary;
+  }
+}
+
 @tailwind components;
 
 @layer components {
   .nav-link {
     @apply relative inline-block;
   }
-
   .nav-link:after {
     content: "";
     @apply absolute bottom-0 left-0 h-0.5 w-full origin-bottom-right scale-x-0 bg-white transition-transform duration-200 ease-out;
   }
-
   .nav-link:hover:after {
     @apply origin-bottom-left scale-x-100;
   }
-
   .active:after {
     @apply origin-bottom-left scale-x-100;
+  }
+
+  .scroll-fade {
+    position: relative;
+  }
+  .scroll-fade::after {
+    content: "";
+    width: 100%;
+    height: 25%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    pointer-events: none;
+    @apply bg-gradient-to-b from-transparent to-card;
   }
 }
 

@@ -19,7 +19,7 @@ const Home = () => {
           />
         </span>
       </h1>
-      <p className="mr-5 mt-3">
+      <p className="mb-3 mr-5">
         {`I'm a student and open source developer who creates practical projects
         with a minimalist and simple approach. I'm passionate about making a
         difference and collaborating with others to innovate.`}
