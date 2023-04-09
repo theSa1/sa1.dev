@@ -1,28 +1,37 @@
 import Link from "next/link"
 import { HiOutlineHeart, HiOutlineEnvelope } from "react-icons/hi2"
 import { BsGithub, BsTwitter, BsInstagram } from "react-icons/bs"
+import { useRouter } from "next/router"
 
 export const Layout: React.FC<{
   children: React.ReactNode
 }> = ({ children }) => {
+  const { pathname } = useRouter()
+
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Projects", href: "/projects" },
+    { name: "Contact", href: "/contact" },
+  ]
+
   return (
     <main className="flex min-h-screen items-center justify-center bg-background p-24">
       <div className="grid aspect-video h-80 grid-cols-[1fr,auto] rounded bg-card px-10 py-8 shadow-md">
         <div className="flex flex-col justify-between">
           {children}
           <div className="flex gap-5">
-            <Link className="nav-link font-bold text-white" href="/">
-              Home
-            </Link>
-            <Link className="nav-link font-bold text-white" href="/">
-              About
-            </Link>
-            <Link className="nav-link font-bold text-white" href="/">
-              Projects
-            </Link>
-            <Link className="nav-link font-bold text-white" href="/">
-              Contact
-            </Link>
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                className={`nav-link${
+                  link.href === pathname ? " active" : ""
+                } font-bold text-white`}
+                href={link.href}
+              >
+                {link.name}
+              </Link>
+            ))}
           </div>
         </div>
         <div className="flex flex-col items-end justify-between text-secondary">
